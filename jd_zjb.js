@@ -1,28 +1,32 @@
 /*
-#柠檬拆红包 直接更新我的库
-#自定义变量
-export chbpacketId=""
+#柠檬赚金币
+##入口为极速版 百元生活费 赚金币 邀请好友
+##第一次运行可不填写邀请码 运行一次查看自己的邀请码
+export InviterPin="dS%2Bp85VyjydPuAOOnFP%2Faw%3D%3D" ##你的邀请码
+
+
 [task_local]
-#柠檬拆红包
-0 0 * * * http://nm66.top/jd_chb.js, tag=柠檬拆红包, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
+#柠檬赚金币
+0 5 * * * http://nm66.top/jd_zjb.js, tag=柠檬赚金币, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
 */
-const $ = new Env('柠檬拆红包');
+const $ = new Env('柠檬赚金币');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message;
-let chbpacketId = '9b58c89e3aa24ea48880c1e07c106c8a';
-// if (process.env.chbpacketId) {
-//   chbpacketId = process.env.chbpacketId;
-// }
+let InviterPin = '/eNHdfn6fP+TFwVda3ipjWwvTFqeKBZaRG38adWABKk='; //
 
-//兼容elecV2P
-chbpacketId = $.getdata('chbpacketId') ? $.getdata('chbpacketId') : chbpacketId;
-if ($.isNode() && process.env.CHB_PACKETID) {
-  chbpacketId = process.env.CHB_PACKETID;
+
+if (process.env.InviterPin) {
+  InviterPin = process.env.InviterPin;
 }
+
+
+
+
+
 
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
@@ -39,6 +43,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
     $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
     return;
   }
+
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
@@ -57,8 +62,14 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
         }
         continue
       }
-      await $.wait(10000)
-      await chb()     
+     
+
+       await info()
+          
+        await help()
+
+
+
     }
   }
 })()
@@ -69,27 +80,35 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
     $.done();
   })
 
-function chb() {
+
+function info() {
     return new Promise(async (resolve) => {
-        let options = {
-            url: `https://api.m.jd.com/?t=1623066557140`,
-            //dS%2Bp85VyjydPuAOOnFP%2Faw%3D%3D
-            body: `client=megatron&clientVersion=1.0.0&networkType=&eid=&fp=-1&uuid=75aeceef3046d8ce11d354ff89af9517a2e4aa11&osVersion=14.3&d_brand=&d_model=&pageClickKey=-1&screen=414*736&lang=zh_CN&functionId=dismantleRedEnvelope&body={"packetId":"${chbpacketId}","actId":"7f0009deb92548d4b3efe88d718ed3a8","frontendInitStatus":"s","antiToken":"","platform":3}&t=1623123481201&_t=1623123481202`,
-            headers: {
-                "Origin": "https://pushgold.jd.com",
-                "Host": "api.m.jd.com",
-                "User-Agent": "jdltapp;iPhone;3.3.6;14.3;75aeceef3046d8ce11d354ff89af9517a2e4aa18;network/wifi;hasUPPay/0;pushNoticeIsOpen/0;lang/zh_CN;model/iPhone9,2;addressid/4585826605;hasOCPay/0;appBuild/1060;supportBestPay/0;pv/53.31;apprpd/;ref/https://invite-reward.jd.com/?lng=106.286950&lat=29.969353&sid=547255867e847394aedfb6d68c3e50fw&un_area=4_48201_54794_0#/invitee?inviterId=dS%2Bp85VyjydPuAOOnFP%2Faw%3D%3D;psq/0;ads/;psn/75aeceef3046d8ce11d354ff89af9517a2e4aa18|89;jdv/0|kong|t_1001003207_1762319_6901310|jingfen|30578707801140d09fcd54e5cd83bbf7|1621510932517|1621511027;adk/;app_device/IOS;pap/JA2020_3112531|3.3.6|IOS 14.3;Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1",
-                "Cookie": cookie,
-            }
-        }
+
+                let options = {
+    url: `https://api.m.jd.com`,
+
+    body: `functionId=TaskInviteService&body={"method":"inviteTaskHomePage","data":{"channel":"1"}}&appid=market-task-h5&uuid=7303439343432346-7356431353233311&eu=7303439343432341&fv=7356431353233321&_t=1623475839367`,
+headers: {
+"Origin": "https://assignment.jd.com",
+"Host": "api.m.jd.com",
+"User-Agent": "jdltapp;android;3.5.0;10;7303439343432346-7356431353233323;network/wifi;model/PCAM00;addressid/4228801336;aid/7049442d7e415232;oaid/;osVer/29;appBuild/1587;psn/jkWXTyfQA2PDVmg3OkxOiWnHy7pHXWA |155;psq/12;adk/;ads/;pap/JA2020_3112531|3.5.0|ANDROID 10;osv/10;pv/36.36;jdv/;ref/com.jd.jdlite.lib.mission.allowance.AllowanceFragment;partner/oppo;apprpd/Allowance_Registered;eufv/1;Mozilla/5.0 (Linux; Android 10; PCAM00 Build/QKQ1.190918.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/66.0.3359.126 MQQBrowser/6.2 TBS/045140 Mobile Safari/537.36",
+      "Cookie": cookie,
+      }
+                }
+      
         $.post(options, async (err, resp, data) => {
             try {
-                data = JSON.parse(data);
-                //console.log(data)
-                if (data.code == 0) {
-                    console.log(data.msg)
-                } else
-                    console.log(data.msg)
+
+                    //data = data.match(/(\{[^()]+\}.+)/)[1]
+
+                    //console.log(data)
+                    const reust = JSON.parse(data)
+                    //console.log(reust)
+                    if(reust.code == 0){
+                    $.log("你的邀请码："+reust.data.encryptionInviterPin)
+                }else
+                
+                    console.log(data.message)
             } catch (e) {
                 $.logErr(e, resp);
             } finally {
@@ -98,6 +117,57 @@ function chb() {
         });
     });
 }
+
+function help() {
+    return new Promise(async (resolve) => {
+
+                let options = {
+    url: `https://api.m.jd.com`,
+
+    body: `functionId=TaskInviteService&body={"method":"participateInviteTask","data":{"channel":"1","encryptionInviterPin":"${InviterPin}","type":1}}&appid=market-task-h5&uuid=7303439343432346-7356431353233311&eu=7303439343432341&fv=7356431353233321&_t=1623475839367`,
+headers: {
+"Origin": "https://assignment.jd.com",
+"Host": "api.m.jd.com",
+"User-Agent": "jdltapp;android;3.5.0;10;7303439343432346-7356431353233323;network/wifi;model/PCAM00;addressid/4228801336;aid/7049442d7e415232;oaid/;osVer/29;appBuild/1587;psn/jkWXTyfQA2PDVmg3OkxOiWnHy7pHXWA |155;psq/12;adk/;ads/;pap/JA2020_3112531|3.5.0|ANDROID 10;osv/10;pv/36.36;jdv/;ref/com.jd.jdlite.lib.mission.allowance.AllowanceFragment;partner/oppo;apprpd/Allowance_Registered;eufv/1;Mozilla/5.0 (Linux; Android 10; PCAM00 Build/QKQ1.190918.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/66.0.3359.126 MQQBrowser/6.2 TBS/045140 Mobile Safari/537.36",
+      "Cookie": cookie,
+      }
+                }
+      
+        $.post(options, async (err, resp, data) => {
+            try {
+
+                    //data = data.match(/(\{[^()]+\}.+)/)[1]
+
+                    //console.log(data)
+                    const reust = JSON.parse(data)
+                    //console.log(reust)
+                    if(reust.code == 0){
+                    $.log(`即将开始邀请：${InviterPin}\n邀请获得金币: `+reust.data.coinReward*0.1+"金币")
+                }else  
+                
+                    console.log(reust.message)
+            } catch (e) {
+                $.logErr(e, resp);
+            } finally {
+                resolve();
+            }
+        });
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 async function taskPostUrl(functionId,body) {
   return {
@@ -114,6 +184,7 @@ async function taskPostUrl(functionId,body) {
     }
   }
 }
+
 
 async function TotalBean() {
   return new Promise(async resolve => {
