@@ -3,7 +3,6 @@
 #自定义邀请码环境变量
 export redEnvelopeId="" ##本期活动ID
 export inviter="" ##邀请码
-
 [task_local]
 #柠檬省钱大赢家
  0,2 0 * * * http://nm66.top/jd_sqdyj.js, tag=柠檬省钱大赢家, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
@@ -15,7 +14,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message;
-let redEnvelopeId = '29cd1f195328455192d304babff1463359381623427273191';
+let redEnvelopeId = 'f18e88f46cdd456b9cff2802b82ababc53901623513664501';
 let inviter = 'AghrnocwyBzh_6aDh3BPmS5acIv86eToUuynlVFt-GU';
 
 // if (process.env.redEnvelopeId) {
