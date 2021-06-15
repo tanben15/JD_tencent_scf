@@ -1,4 +1,4 @@
-/*
+﻿/*
 京东京喜工厂
 更新时间：2021-4-21
 修复做任务、收集电力出现火爆，不能完成任务，重新计算h5st验证
@@ -43,10 +43,19 @@ let tuanActiveId = `laD7IwPwDF1-Te-MvbW9Iw==`;
 const jxOpenUrl = `openjd://virtual?params=%7B%20%22category%22:%20%22jump%22,%20%22des%22:%20%22m%22,%20%22url%22:%20%22https://wqsd.jd.com/pingou/dream_factory/index.html%22%20%7D`;
 let cookiesArr = [], cookie = '', message = '', allMessage = '';
 const inviteCodes = [
-  'V5LkjP4WRyjeCKR9VRwcRX0bBuTz7MEK0-E99EJ7u0k=@0WtCMPNq7jekehT6d3AbFw==@6lw84c1ARwpoRyOtfnF77g==@J1t777njetfQcyEg57lzQA==@W9u_eBl3YKbSjXu0QP3HGQ=@VV55A_oKz5u5CYrL3jxPdg==',
-  "gB99tYLjvPcEFloDgamoBw==@7dluIKQMp0bySgcr8AqFgw==@6lw84c1ARwpoRyOtfnF77g==@J1t777njetfQcyEg57lzQA==@W9u_eBl3YKbSjXu0QP3HGQ=@VV55A_oKz5u5CYrL3jxPdg==",
-  '-OvElMzqeyeGBWazWYjI1Q==@6lw84c1ARwpoRyOtfnF77g==@J1t777njetfQcyEg57lzQA==@W9u_eBl3YKbSjXu0QP3HGQ=@VV55A_oKz5u5CYrL3jxPdg==',
-  'GFwo6PntxDHH95ZRzZ5uAg==@6lw84c1ARwpoRyOtfnF77g==@J1t777njetfQcyEg57lzQA==@W9u_eBl3YKbSjXu0QP3HGQ=@VV55A_oKz5u5CYrL3jxPdg=='
+  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
+  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
+  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
+  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
+  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
+  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
+  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
+  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
+  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
+  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
+  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
+  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
+  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A=='
 ];
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 $.tuanIds = [];
