@@ -1,4 +1,4 @@
-﻿/*
+/*
 京东京喜工厂
 更新时间：2021-4-21
 修复做任务、收集电力出现火爆，不能完成任务，重新计算h5st验证
@@ -39,23 +39,14 @@ const helpAu = true; //帮作者助力 免费拿活动
 const notify = $.isNode() ? require('./sendNotify') : '';
 let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭通知推送
 const randomCount = $.isNode() ? 0 : 5;
-let tuanActiveId = `laD7IwPwDF1-Te-MvbW9Iw==`;
+let tuanActiveId = `bozIUUFcANuUdWpw3QdvPw==`;
 const jxOpenUrl = `openjd://virtual?params=%7B%20%22category%22:%20%22jump%22,%20%22des%22:%20%22m%22,%20%22url%22:%20%22https://wqsd.jd.com/pingou/dream_factory/index.html%22%20%7D`;
 let cookiesArr = [], cookie = '', message = '', allMessage = '';
 const inviteCodes = [
-  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
-  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
-  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
-  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
-  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
-  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
-  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
-  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
-  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
-  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
-  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
-  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A==',
-  'w4i09RJB74vdKovInJG1mA==@thnG8vdpSqhvtja42czZXw==@FLyC2-AaHCzM9zMjlS-X0A=='
+  'V5LkjP4WRyjeCKR9VRwcRX0bBuTz7MEK0-E99EJ7u0k=@0WtCMPNq7jekehT6d3AbFw==@6lw84c1ARwpoRyOtfnF77g==@J1t777njetfQcyEg57lzQA==@W9u_eBl3YKbSjXu0QP3HGQ=@VV55A_oKz5u5CYrL3jxPdg==',
+  "gB99tYLjvPcEFloDgamoBw==@7dluIKQMp0bySgcr8AqFgw==@6lw84c1ARwpoRyOtfnF77g==@J1t777njetfQcyEg57lzQA==@W9u_eBl3YKbSjXu0QP3HGQ=@VV55A_oKz5u5CYrL3jxPdg==",
+  '-OvElMzqeyeGBWazWYjI1Q==@6lw84c1ARwpoRyOtfnF77g==@J1t777njetfQcyEg57lzQA==@W9u_eBl3YKbSjXu0QP3HGQ=@VV55A_oKz5u5CYrL3jxPdg==',
+  'GFwo6PntxDHH95ZRzZ5uAg==@6lw84c1ARwpoRyOtfnF77g==@J1t777njetfQcyEg57lzQA==@W9u_eBl3YKbSjXu0QP3HGQ=@VV55A_oKz5u5CYrL3jxPdg=='
 ];
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 $.tuanIds = [];
