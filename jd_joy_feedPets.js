@@ -1,4 +1,4 @@
-/*
+﻿/*
 宠汪汪喂食(如果喂食80g失败，降级一个档次喂食（40g）,依次类推),三餐，建议一小时运行一次
 更新时间：2021-6-6
 活动入口：京东APP我的-更多工具-宠汪汪
@@ -46,7 +46,7 @@ if ($.isNode()) {
 let jdNotify = true;//是否开启静默运行。默认true开启
 let message = '', subTitle = '';
 const JD_API_HOST = 'https://jdjoy.jd.com'
-let FEED_NUM = ($.getdata('joyFeedCount') * 1) || 10;   //喂食数量默认10g,可选 10,20,40,80 , 其他数字不可.
+let FEED_NUM = ($.getdata('joyFeedCount') * 1) || 80;   //喂食数量默认10g,可选 10,20,40,80 , 其他数字不可.
 
 !(async () => {
   if (!cookiesArr[0]) {
