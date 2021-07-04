@@ -60,7 +60,6 @@ let shareCodes = [ // 这个列表填入你要助力的好友的shareCode
   //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
   'e8b98b3378d1452aacd8264db388ad39@938a2a6d2007437f92d6281321383e22@ef3fe7f2772440dcb68a8a2b10d72d3c@2d711d2009024c6db04e52f16d0c4509',
 ]
-
 let message = '', subTitle = '', option = {}, isFruitFinished = false;
 const retainWater = 100;//保留水滴大于多少g,默认100g;
 let jdNotify = false;//是否关闭通知，false打开通知推送，true关闭通知推送
@@ -96,6 +95,13 @@ const urlSchema = `openjd://virtual?params=%7B%20%22category%22:%20%22jump%22,%2
       option = {};
       await shareCodesFormat();
       await jdFruit();
+      console.log(`🐔东东农场-开始提交互助码！🐔`);
+      const submitCodeRes = await submitCode();
+      if (submitCodeRes && submitCodeRes.code === 200) {
+         console.log(`🐔东东农场-互助码提交成功！🐔`);
+      }else if (submitCodeRes.code === 300) {
+         console.log(`🐔东东农场-互助码已提交！🐔`);
+      }
     }
   }
   if ($.isNode() && allMessage && $.ctrTemp) {
@@ -116,13 +122,6 @@ async function jdFruit() {
       // option['media-url'] = $.farmInfo.farmUserPro.goodsImage;
       message = `【水果名称】${$.farmInfo.farmUserPro.name}\n`;
       console.log(`\n【京东账号${$.index}（${$.UserName}）的${$.name}好友互助码】${$.farmInfo.farmUserPro.shareCode}\n`);
-         console.log(`🐔东东农场-开始提交互助码！🐔`);
-      const submitCodeRes = await submitCode();
-      if (submitCodeRes && submitCodeRes.code === 200) {
-         console.log(`🐔东东农场-互助码提交成功！🐔`);
-      }else if (submitCodeRes.code === 300) {
-         console.log(`🐔东东农场-互助码已提交！🐔`);
-      }
       console.log(`\n【已成功兑换水果】${$.farmInfo.farmUserPro.winTimes}次\n`);
       message += `【已兑换水果】${$.farmInfo.farmUserPro.winTimes}次\n`;
       await masterHelpShare();//助力好友
