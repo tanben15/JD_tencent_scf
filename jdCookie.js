@@ -5,7 +5,14 @@
 let CookieJDs = [
   'pt_key=AAJg4cUBADBTj_qYlrykO78V6vILHEoAX9shjKRDcnguyCL2VsuLuugiEIZtyCDVc6aUEklHkvQ; pt_pin=tanben117;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
   'pt_key=AAJg4cVxADBvGkLbFa4o83FgeYjEJe-GzbfnmMcLLV7IvF81TRDhD6LQKgEfL1WasksoT3Qz66A; pt_pin=jd_5a2ee9240e8f2;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
-  'pt_key=AAJg4cXTADAYyt0z7HX2COllBc3m9xd2jedDkf1UScLSskJbWtmDktlzQ02FeNBrVdrnJnnW8pI; pt_pin=jd_6245947f92d0a;',//账号二ck,例:pt_key=XXX;pt_pin=XXX;'',//账号二ck,例:pt_key=XXX;pt_pin=XXX;'',  如有更多,依次类推
+  'pt_key=AAJg4cXTADAYyt0z7HX2COllBc3m9xd2jedDkf1UScLSskJbWtmDktlzQ02FeNBrVdrnJnnW8pI; pt_pin=jd_6245947f92d0a;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJg4oHwADDzTfCTd0J_GHjcBOF2hFDnlwgQSiuI_1DQFaq7_F2Ux9YLUOrY2E08nkATfaLG61Y; pt_pin=157316-83139169;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJgzKXiADC8anOzV8c0E8YlC1IXxmJyc7HbABc-olwPlifEXsD7MLBm1Qq2V8pGTQfQ8_jTcCo; pt_pin=303041182-346709;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJg47fEADB4qpwxIsvV0bwqdFmOxcAAtOUIkiqWm6jr8gFJe9ujokPXu_4JQdk0twGjsL051m0; pt_pin=jd_6b95ab59f33bc;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJg47bnADC0fBK8_7TTjupyP-cDIO8Ten27gpsCVg38_H8fm6GryO2MCxTRQ05-OVkR4-VujXU; pt_pin=80272529-417959;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJg47nYADAM78fcDMDHABNahbxd_SvBDrZb5bnQrFZxdmYmK8SrCPerhVBfAu9ffYR7_Z5YzhQ; pt_pin=zhanglianf_mru;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJg48EOADCxcu0PMqsw_zgWUK6zxHiIFW9mNfJrie3OuSLoKgWfhvY3bMKWaeRGPaR-avhwv0o; pt_pin=jd_FBxosKoLCPaC;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJg4-3WADD5pr3nkC38FJcr6-EAJt4xhkV0O8mkLFDSG0OUxOWlsRQ6b8cLeULEIJISVAAIcP0; pt_pin=fan_1023;',//账号二ck,例:pt_key=XXX;pt_pin=XXX;'',//账号二ck,例:pt_key=XXX;pt_pin=XXX;'',  如有更多,依次类推
 ]
 // 判断环境变量里面是否有京东ck
 if (process.env.JD_COOKIE) {
