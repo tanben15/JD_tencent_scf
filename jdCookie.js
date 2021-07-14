@@ -12,7 +12,9 @@ let CookieJDs = [
   'pt_key=AAJg47bnADC0fBK8_7TTjupyP-cDIO8Ten27gpsCVg38_H8fm6GryO2MCxTRQ05-OVkR4-VujXU; pt_pin=80272529-417959;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
   'pt_key=AAJg47nYADAM78fcDMDHABNahbxd_SvBDrZb5bnQrFZxdmYmK8SrCPerhVBfAu9ffYR7_Z5YzhQ; pt_pin=zhanglianf_mru;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
   'pt_key=AAJg48EOADCxcu0PMqsw_zgWUK6zxHiIFW9mNfJrie3OuSLoKgWfhvY3bMKWaeRGPaR-avhwv0o; pt_pin=jd_FBxosKoLCPaC;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
-  'pt_key=AAJg4-3WADD5pr3nkC38FJcr6-EAJt4xhkV0O8mkLFDSG0OUxOWlsRQ6b8cLeULEIJISVAAIcP0; pt_pin=fan_1023;',//账号二ck,例:pt_key=XXX;pt_pin=XXX;'',//账号二ck,例:pt_key=XXX;pt_pin=XXX;'',  如有更多,依次类推
+  'pt_key=AAJg4-3WADD5pr3nkC38FJcr6-EAJt4xhkV0O8mkLFDSG0OUxOWlsRQ6b8cLeULEIJISVAAIcP0; pt_pin=fan_1023;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJg6vcsADDi2hxbPuyor6q26dwNaVOyPEis-SqNdQS7_mIqbJ32bTzV-ygxCtwIAP0XL-TRpS4; pt_pin=jd_yEQhGVQczrbb;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJg6_XgADA7YbR-4LKdNlBA9l9aHAdzowQ01nxvz_g9mBc3IUnUU51YX0ywM3j4uxzHy7uQQJ4; pt_pin=jd_4ab847068b14c;',//账号二ck,例:pt_key=XXX;pt_pin=XXX;'',//账号二ck,例:pt_key=XXX;pt_pin=XXX;'',  如有更多,依次类推
 ]
 // 判断环境变量里面是否有京东ck
 if (process.env.JD_COOKIE) {
