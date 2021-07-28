@@ -52,7 +52,10 @@ const inviteCodes = [
     `S-qwtEktH9FXQ@S5KkcRU8boAHeIh70wf9cdg@S5KkcRhwd8F3TJ0z9lqMKJQ@Sv_h0Qx8f6FzUIRn9lfED`,
     `S-qwtEktH9FXQ@S5KkcRU8boAHeIh70wf9cdg@S5KkcRhwd8F3TJ0z9lqMKJQ@Sv_h0Qx8f6FzUIRn9lfED`,
     `S-qwtEktH9FXQ@S5KkcRU8boAHeIh70wf9cdg@S5KkcRhwd8F3TJ0z9lqMKJQ@Sv_h0Qx8f6FzUIRn9lfED`,
-]
+    `S-qwtEktH9FXQ@S5KkcRU8boAHeIh70wf9cdg@S5KkcRhwd8F3TJ0z9lqMKJQ@Sv_h0Qx8f6FzUIRn9lfED`,
+    `S-qwtEktH9FXQ@S5KkcRU8boAHeIh70wf9cdg@S5KkcRhwd8F3TJ0z9lqMKJQ@Sv_h0Qx8f6FzUIRn9lfED`,
+    `S-qwtEktH9FXQ@S5KkcRU8boAHeIh70wf9cdg@S5KkcRhwd8F3TJ0z9lqMKJQ@Sv_h0Qx8f6FzUIRn9lfED`,
+    `S-qwtEktH9FXQ@S5KkcRU8boAHeIh70wf9cdg@S5KkcRhwd8F3TJ0z9lqMKJQ@Sv_h0Qx8f6FzUIRn9lfED`,]
 let nowTimes = new Date(new Date().getTime() + new Date().getTimezoneOffset() * 60 * 1000 + 8 * 60 * 60 * 1000);
 !(async () => {
   $.tuanList = [];
@@ -60,7 +63,7 @@ let nowTimes = new Date(new Date().getTime() + new Date().getTimezoneOffset() * 
   await requireConfig();
   // if (helpAuthor) await getAuthorShareCode('http://qr6pzoy01.hn-bkt.clouddn.com/jd_zz.json');
   if (helpAuthor) await getAuthorShareCode('https://raw.githubusercontent.com/gitupdate/updateTeam/master/shareCodes/jd_zz.json');
-  if (helpAuthor) await getAuthorShareCode('https://ghproxy.com/https://raw.githubusercontent.com/zero205/updateTeam/master/shareCodes/jd_zz.json');
+  if (helpAuthor) await getAuthorShareCode('https://raw.fastgit.org/zero205/updateTeam/master/shareCodes/jd_zz.json');
   if (!cookiesArr[0]) {
     $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
     return;

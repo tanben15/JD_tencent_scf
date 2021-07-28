@@ -20,6 +20,7 @@ node jd_ddo_pk.js
 node jd_djjl.js
 node jd_dreamFactory.js
 node jd_europeancup.js
+node jd_earn30.js
 node jd_family.js
 node jd_fruit.js
 node jd_gold_creator.js
@@ -68,6 +69,7 @@ node jd_syj.js
 node jd_try.js
 node jd_tyt.js
 node jd_zqfl.js
+node jd_wsdlb.js
 node jd_wxFans.js
 node jd_wxj.js
 node jd_z_health_community.js
@@ -76,4 +78,5 @@ node jd_zjb.js
 node jd_zqfl.js
 node jd_zxry.js
 node jd_dyj.js
+node jd_tewuZ.js
 pause

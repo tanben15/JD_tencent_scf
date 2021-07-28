@@ -57,14 +57,26 @@ let shareCodes = [ // IOS本地脚本用户这个列表填入你要助力的好�
   //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
   'wk27lkwhoixjdgdfa22t46njdy@mlrdw3aw26j3xlyn3ah767jja5kwkeybclgpeyy@olmijoxgmjutyhz5q55p7csm3pcmjvygsdqlqoq@fqqix4fy6ibzha65eqo6y6kdlxqer3lq5k2s5zq',
   //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
-  'wk27lkwhoixjdgdfa22t46njdy@mlrdw3aw26j3xlyn3ah767jja5kwkeybclgpeyy@olmijoxgmjutyhz5q55p7csm3pcmjvygsdqlqoq@fqqix4fy6ibzha65eqo6y6kdlxqer3lq5k2s5zq','wk27lkwhoixjdgdfa22t46njdy@mlrdw3aw26j3xlyn3ah767jja5kwkeybclgpeyy@olmijoxgmjutyhz5q55p7csm3pcmjvygsdqlqoq@fqqix4fy6ibzha65eqo6y6kdlxqer3lq5k2s5zq',
+  'wk27lkwhoixjdgdfa22t46njdy@mlrdw3aw26j3xlyn3ah767jja5kwkeybclgpeyy@olmijoxgmjutyhz5q55p7csm3pcmjvygsdqlqoq@fqqix4fy6ibzha65eqo6y6kdlxqer3lq5k2s5zq',
+  //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
+  'wk27lkwhoixjdgdfa22t46njdy@mlrdw3aw26j3xlyn3ah767jja5kwkeybclgpeyy@olmijoxgmjutyhz5q55p7csm3pcmjvygsdqlqoq@fqqix4fy6ibzha65eqo6y6kdlxqer3lq5k2s5zq',
+  //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
+  'wk27lkwhoixjdgdfa22t46njdy@mlrdw3aw26j3xlyn3ah767jja5kwkeybclgpeyy@olmijoxgmjutyhz5q55p7csm3pcmjvygsdqlqoq@fqqix4fy6ibzha65eqo6y6kdlxqer3lq5k2s5zq',
+  //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
+  'wk27lkwhoixjdgdfa22t46njdy@mlrdw3aw26j3xlyn3ah767jja5kwkeybclgpeyy@olmijoxgmjutyhz5q55p7csm3pcmjvygsdqlqoq@fqqix4fy6ibzha65eqo6y6kdlxqer3lq5k2s5zq',
+  //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
+  'wk27lkwhoixjdgdfa22t46njdy@mlrdw3aw26j3xlyn3ah767jja5kwkeybclgpeyy@olmijoxgmjutyhz5q55p7csm3pcmjvygsdqlqoq@fqqix4fy6ibzha65eqo6y6kdlxqer3lq5k2s5zq',
+  //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
+  'wk27lkwhoixjdgdfa22t46njdy@mlrdw3aw26j3xlyn3ah767jja5kwkeybclgpeyy@olmijoxgmjutyhz5q55p7csm3pcmjvygsdqlqoq@fqqix4fy6ibzha65eqo6y6kdlxqer3lq5k2s5zq',
+  //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
+  'wk27lkwhoixjdgdfa22t46njdy@mlrdw3aw26j3xlyn3ah767jja5kwkeybclgpeyy@olmijoxgmjutyhz5q55p7csm3pcmjvygsdqlqoq@fqqix4fy6ibzha65eqo6y6kdlxqer3lq5k2s5zq',
 ]
 let allMessage = ``;
 let currentRoundId = null;//本期活动id
 let lastRoundId = null;//上期id
 let roundList = [];
 let awardState = '';//上期活动的京豆是否收取
-let randomCount = $.isNode() ? 10 : 3;
+let randomCount = $.isNode() ? 0 : 0;
 !(async () => {
   await requireConfig();
   if (!cookiesArr[0]) {
@@ -94,13 +106,6 @@ let randomCount = $.isNode() ? 10 : 3;
       await shareCodesFormat();
       await jdPlantBean();
       await showMsg();
-      console.log(`🥑种豆得豆-开始提交互助码！🥑`);
-      const submitCodeRes = await submitCode();
-      if (submitCodeRes && submitCodeRes.code === 200) {
-         console.log(`🥑种豆得豆-互助码提交成功！🥑`);
-      }else if (submitCodeRes.code === 300) {
-         console.log(`🥑种豆得豆-互助码已提交！🥑`);
-      }
     }
   }
   if ($.isNode() && allMessage) {
@@ -140,12 +145,15 @@ async function jdPlantBean() {
       await plantShareSupportList();
     } else {
       console.log(`种豆得豆-初始失败:  ${JSON.stringify($.plantBeanIndexResult)}`);
+      console.log(`等待10秒后重试`);
+      await $.wait(10000);
+      await jdPlantBean();
     }
   } catch (e) {
     $.logErr(e);
-    const errMsg = `京东账号${$.index} ${$.nickName || $.UserName}\n任务执行异常，请检查执行日志 ‼️‼️`;
-    if ($.isNode()) await notify.sendNotify(`${$.name}`, errMsg);
-    $.msg($.name, '', `${errMsg}`)
+    // const errMsg = `京东账号${$.index} ${$.nickName || $.UserName}\n任务执行异常，请检查执行日志 ‼️‼️`;
+    // if ($.isNode()) await notify.sendNotify(`${$.name}`, errMsg);
+    // $.msg($.name, '', `${errMsg}`)
   }
 }
 async function doGetReward() {
@@ -556,53 +564,53 @@ async function helpShare(plantUuid) {
 async function plantBeanIndex() {
   $.plantBeanIndexResult = await request('plantBeanIndex');//plantBeanIndexBody
 }
-function readShareCode() {
-  return new Promise(async resolve => {
-    $.get({url: `http://www.helpu.cf/jdcodes/getcode.php?type=bean&num=${randomCount}`, timeout: 10000}, (err, resp, data) => {
-      try {
-        if (err) {
-          console.log(`${JSON.stringify(err)}`)
-          console.log(`${$.name} API请求失败，请检查网路重试`)
-        } else {
-          if (data) {
-            console.log(`随机取个${randomCount}码放到您固定的互助码后面(不影响已有固定互助)`)
-            data = JSON.parse(data);
-          }
-        }
-      } catch (e) {
-        $.logErr(e, resp)
-      } finally {
-        resolve(data);
-      }
-    })
-    await $.wait(15000);
-    resolve()
-  })
-}
+// function readShareCode() {
+//   return new Promise(async resolve => {
+//     $.get({url: `http://www.helpu.cf/jdcodes/getcode.php?type=bean&num=${randomCount}`, timeout: 10000}, (err, resp, data) => {
+//       try {
+//         if (err) {
+//           console.log(`${JSON.stringify(err)}`)
+//           console.log(`${$.name} API请求失败，请检查网路重试`)
+//         } else {
+//           if (data) {
+//             console.log(`随机取个${randomCount}码放到您固定的互助码后面(不影响已有固定互助)`)
+//             data = JSON.parse(data);
+//           }
+//         }
+//       } catch (e) {
+//         $.logErr(e, resp)
+//       } finally {
+//         resolve(data);
+//       }
+//     })
+//     await $.wait(15000);
+//     resolve()
+//   })
+// }
 //提交互助码
-function submitCode() {
-  return new Promise(async resolve => {
-  $.get({url: `http://www.helpu.cf/jdcodes/submit.php?code=${$.myPlantUuid}&type=bean`, timeout: 10000}, (err, resp, data) => {
-    try {
-      if (err) {
-        console.log(`${JSON.stringify(err)}`)
-        console.log(`${$.name} API请求失败，请检查网路重试`)
-      } else {
-        if (data) {
-          //console.log(`随机取个${randomCount}码放到您固定的互助码后面(不影响已有固定互助)`)
-          data = JSON.parse(data);
-        }
-      }
-    } catch (e) {
-      $.logErr(e, resp)
-    } finally {
-      resolve(data);
-    }
-  })
-  await $.wait(15000);
-  resolve()
-})
-}
+// function submitCode() {
+//   return new Promise(async resolve => {
+//   $.get({url: `http://www.helpu.cf/jdcodes/submit.php?code=${$.myPlantUuid}&type=bean`, timeout: 10000}, (err, resp, data) => {
+//     try {
+//       if (err) {
+//         console.log(`${JSON.stringify(err)}`)
+//         console.log(`${$.name} API请求失败，请检查网路重试`)
+//       } else {
+//         if (data) {
+//           //console.log(`随机取个${randomCount}码放到您固定的互助码后面(不影响已有固定互助)`)
+//           data = JSON.parse(data);
+//         }
+//       }
+//     } catch (e) {
+//       $.logErr(e, resp)
+//     } finally {
+//       resolve(data);
+//     }
+//   })
+//   await $.wait(15000);
+//   resolve()
+// })
+// }
 //格式化助力码
 function shareCodesFormat() {
   return new Promise(async resolve => {
@@ -615,10 +623,10 @@ function shareCodesFormat() {
       const tempIndex = $.index > shareCodes.length ? (shareCodes.length - 1) : ($.index - 1);
       newShareCodes = shareCodes[tempIndex].split('@');
     }
-    const readShareCodeRes = await readShareCode();
-    if (readShareCodeRes && readShareCodeRes.code === 200) {
-      newShareCodes = [...new Set([...newShareCodes, ...(readShareCodeRes.data || [])])];
-    }
+    // const readShareCodeRes = await readShareCode();
+    // if (readShareCodeRes && readShareCodeRes.code === 200) {
+    //   newShareCodes = [...new Set([...newShareCodes, ...(readShareCodeRes.data || [])])];
+    // }
     console.log(`第${$.index}个京东账号将要助力的好友${JSON.stringify(newShareCodes)}`)
     resolve();
   })
