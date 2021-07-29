@@ -92,13 +92,13 @@ const JD_API_HOST = `https://api.m.jd.com/client.action`;
       }
       await interact_template_getHomeData()
       // await showMsg();
-      console.log(`📦闪购盲盒-开始提交互助码！📦`);
-      const submitCodeRes = await submitCode();
-      if (submitCodeRes && submitCodeRes.code === 200) {
-        console.log(`📦闪购盲盒-互助码提交成功！📦`);
-      } else if (submitCodeRes.code === 300) {
-        console.log(`📦闪购盲盒-互助码已提交！📦`);
-      }
+//       console.log(`📦闪购盲盒-开始提交互助码！📦`);
+//       const submitCodeRes = await submitCode();
+//       if (submitCodeRes && submitCodeRes.code === 200) {
+//         console.log(`📦闪购盲盒-互助码提交成功！📦`);
+//       } else if (submitCodeRes.code === 300) {
+//         console.log(`📦闪购盲盒-互助码已提交！📦`);
+//       }
     }
   }
 })()
