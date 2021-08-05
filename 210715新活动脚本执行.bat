@@ -12,6 +12,7 @@ node jd_car.js
 node jd_car_exchange.js
 node jd_cash.js
 node jd_cash_exchange.js
+node jd_cfd.js
 node jd_cfdtx.js
 node jd_club_lottery.js
 node jd_daily_egg.js
@@ -37,9 +38,9 @@ node jd_jxd.js
 node jd_jxlhb.js
 node jd_jxmc.js
 node jd_jxnc.js
-node jd_jxqd.js
 node jd_kd.js
 node jd_live.js
+node jd_ljd.js
 node jd_lotteryMachine.js
 node jd_lsj.js
 node jd_mohe.js
