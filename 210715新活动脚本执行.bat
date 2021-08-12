@@ -10,6 +10,7 @@ node jd_blueCoin.js
 node jd_bookshop.js
 node jd_car.js
 node jd_car_exchange.js
+node jd_carnivalcity.js
 node jd_cash.js
 node jd_cash_exchange.js
 node jd_cfd.js
@@ -24,6 +25,7 @@ node jd_europeancup.js
 node jd_earn30.js
 node jd_family.js
 node jd_fruit.js
+node jd_goldPhone.js
 node jd_gold_creator.js
 node jd_half_redrain.js
 node jd_health.js
@@ -33,6 +35,7 @@ node jd_jdzz.js
 node jd_jin_tie.js
 node jd_joy_park.js
 node jd_joy_park_task.js
+node jd_joy_park_newtask.js
 node jd_jump.js
 node jd_jxd.js
 node jd_jxlhb.js
@@ -53,6 +56,7 @@ node jd_pet.js
 node jd_pigPet.js
 node jd_plantBean.js
 node jd_price.js
+node jd_qixi.js
 node jd_qjd.js
 node jd_rankingList.js 
 node jd_redPacket.js
@@ -69,6 +73,7 @@ node jd_super_redrain.js
 node jd_syj.js
 node jd_try.js
 node jd_tyt.js
+node jd_update_goldPhone.js
 node jd_zqfl.js
 node jd_wsdlb.js
 node jd_wxFans.js
@@ -80,4 +85,5 @@ node jd_zqfl.js
 node jd_zxry.js
 node jd_dyj.js
 node jd_tewuZ.js
+node jd_xyc.js
 pause
