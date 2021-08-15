@@ -6,6 +6,4 @@ node jd_carnivalcity.js
 node jd_qixi.js
 node jd_qjd.js
 node jx_sign.js
-node jd_try.js
-
 pause

@@ -3,19 +3,20 @@
  */
 //此处填写京东账号cookie。
 let CookieJDs = [
-  'pt_key=AAJg74zeADBY_Czx1rzd7IO_bXzi_vzJOAPDUcAfp8DaT7qs_zn2xZALpWUyeLyyL1CVZ9A0kyg; pt_pin=tanben117;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
-  'pt_key=AAJhCe47ADD6pQqYCHlsafy8GIIkMqci_a1h7QlaV38AIngb5K0p7DzCXVJRjsayNgUxqaaSQVc; pt_pin=jd_5a2ee9240e8f2;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
-  'pt_key=AAJhCfC1ADAog05DG1_BarbAaGYBaJoOQPqshlzWwh0IwieIk7ZBjvxjeRV7g8ecxiaU6lUmnoM; pt_pin=jd_6245947f92d0a;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
-  'pt_key=AAJhCi5hADDecb8Ox5gpp75ptcI_H2-PWYco2Cwd0G-DiMI-pwxsSGn_d7QpyKHlcOcShFSzf7Q; pt_pin=157316-83139169;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
-  'pt_key=AAJg9D8FADB1XH2dSZ3SNCFVyjKCfK97XiD9r3ePu1dtU5oGjuuj9YMibskxTb5xo7jpunSBj4E; pt_pin=303041182-346709;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
-  'pt_key=AAJg47fEADB4qpwxIsvV0bwqdFmOxcAAtOUIkiqWm6jr8gFJe9ujokPXu_4JQdk0twGjsL051m0; pt_pin=jd_6b95ab59f33bc;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
-  'pt_key=AAJg47bnADC0fBK8_7TTjupyP-cDIO8Ten27gpsCVg38_H8fm6GryO2MCxTRQ05-OVkR4-VujXU; pt_pin=80272529-417959;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
-  'pt_key=AAJg47nYADAM78fcDMDHABNahbxd_SvBDrZb5bnQrFZxdmYmK8SrCPerhVBfAu9ffYR7_Z5YzhQ; pt_pin=zhanglianf_mru;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
-  'pt_key=AAJg48EOADCxcu0PMqsw_zgWUK6zxHiIFW9mNfJrie3OuSLoKgWfhvY3bMKWaeRGPaR-avhwv0o; pt_pin=jd_FBxosKoLCPaC;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
-  'pt_key=AAJg4-3WADD5pr3nkC38FJcr6-EAJt4xhkV0O8mkLFDSG0OUxOWlsRQ6b8cLeULEIJISVAAIcP0; pt_pin=fan_1023;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
-  'pt_key=AAJg6vcsADDi2hxbPuyor6q26dwNaVOyPEis-SqNdQS7_mIqbJ32bTzV-ygxCtwIAP0XL-TRpS4; pt_pin=jd_yEQhGVQczrbb;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
-  'pt_key=AAJg6_XgADA7YbR-4LKdNlBA9l9aHAdzowQ01nxvz_g9mBc3IUnUU51YX0ywM3j4uxzHy7uQQJ4; pt_pin=jd_4ab847068b14c;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
-  'pt_key=AAJg8WQkADBf7I5MLPsjMeJ3VGLhWNpOJjHR7F3la6XG1lQnLblM3fFrhpdFbzdKzXI4b3GN80A; pt_pin=diannaobai_m;',//账号二ck,例:pt_key=XXX;pt_pin=XXX;'',//账号二ck,例:pt_key=XXX;pt_pin=XXX;'',  如有更多,依次类推
+  'pt_key=AAJhFyMnADCDW7Q1qmjk-ROr8_d8LJ5_OpG-ND8m7O7yrdRi_wNCIWBRpePw1beZejDPFEGV1nQ; pt_pin=tanben117;',//账号一ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJhCe47ADD6pQqYCHlsafy8GIIkMqci_a1h7QlaV38AIngb5K0p7DzCXVJRjsayNgUxqaaSQVc; pt_pin=jd_5a2ee9240e8f2;',//账号二ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJhCfC1ADAog05DG1_BarbAaGYBaJoOQPqshlzWwh0IwieIk7ZBjvxjeRV7g8ecxiaU6lUmnoM; pt_pin=jd_6245947f92d0a;',//账号三ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJhCi5hADDecb8Ox5gpp75ptcI_H2-PWYco2Cwd0G-DiMI-pwxsSGn_d7QpyKHlcOcShFSzf7Q; pt_pin=157316-83139169;',//账号四ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJg9D8FADB1XH2dSZ3SNCFVyjKCfK97XiD9r3ePu1dtU5oGjuuj9YMibskxTb5xo7jpunSBj4E; pt_pin=303041182-346709;',//账号五ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJhC5nLADAe8EsWmOas8vG3E9TaVWzopKjfuZIfmTpmx9NPhHORv536yMN5yjBe7bIaWtim7a4; pt_pin=jd_6b95ab59f33bc;',//账号六ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJhC5q4ADAGbh--1UpS7EmtWYmweO8XyH9FTHg7Ag1jF1WT2Ai070liUCai1ngj41iGdsfL5ys; pt_pin=80272529-417959;',//账号七ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJhC5--ADBYfXaLyh8mteCLikk0XbJavk_K391ZUm4KoB92pWkNYKPgLMzsRBzL1AtrvzivsAc; pt_pin=zhanglianf_mru;',//账号八ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJhC6TUADCZRaFw0vvjXBSgqNxriO7igGoNXzbwwkDhS8yc1E41lTNM6jVScKwfikKYKLxGPiM; pt_pin=jd_FBxosKoLCPaC;',//账号九ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJhC5t1ADBFPA7QyDmraxbtyrpBrCLYb04iEGKhdXZx_tEHfgyP7oVlJ_uT4dLL3OTgGVVFmeY; pt_pin=fan_1023;',//账号十ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJhFQrqADDvBS1Kx1OsFC8-pMOW48OLOge4VF9T3sAp896SQc7O6-DU_09v6JDyPZT-OyHWitg; pt_pin=jd_yEQhGVQczrbb;',//账号十一ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJhFQ5NADB7cRY3QO7A_ZD3FCdKe4y9c9iCOEteN2Y7TyjuUQLvP3vJkyu5DVbYAFw18lU05Ao; pt_pin=jd_4ab847068b14c;',//账号十二ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJg8WQkADBf7I5MLPsjMeJ3VGLhWNpOJjHR7F3la6XG1lQnLblM3fFrhpdFbzdKzXI4b3GN80A; pt_pin=diannaobai_m;',//账号十三ck,例:pt_key=XXX;pt_pin=XXX;
+  'pt_key=AAJhFQjpADBw7lzMqHFL9DYCjLwr2namtQTBYQsLkmp_qG-YDO0STdD0CoheF2d2qnJeNS1Mwks; pt_pin=jd_526d52a9b9b47;',//账号二ck,例:pt_key=XXX;pt_pin=XXX;'',//账号二ck,例:pt_key=XXX;pt_pin=XXX;'',  如有更多,依次类推
 ]
 // 判断环境变量里面是否有京东ck
 if (process.env.JD_COOKIE) {

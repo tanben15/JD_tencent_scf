@@ -1,10 +1,4 @@
-node jd_necklace.js
-node jd_bean_home.js
-node jd_cash.js
-node jd_crazy_joy.js
-node jd_dreamFactory.js
-node jd_family.js
-node jd_jdfactory.js
+
 node jd_jdzz.js
 node jd_jxmc.js
 node jd_mh.js

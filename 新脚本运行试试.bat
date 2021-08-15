@@ -1,2 +1,2 @@
-node jd_sign_graphics.js
+node jd_cash.js
 pause

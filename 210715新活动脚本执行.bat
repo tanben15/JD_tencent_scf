@@ -40,7 +40,6 @@ node jd_jump.js
 node jd_jxd.js
 node jd_jxlhb.js
 node jd_jxmc.js
-node jd_jxnc.js
 node jd_kd.js
 node jd_live.js
 node jd_ljd.js
@@ -56,6 +55,7 @@ node jd_pet.js
 node jd_pigPet.js
 node jd_plantBean.js
 node jd_price.js
+node jd_qcshj.js
 node jd_qixi.js
 node jd_qjd.js
 node jd_rankingList.js 
