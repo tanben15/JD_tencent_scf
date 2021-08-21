@@ -1,12 +1,15 @@
 ﻿/*
 东东水果:脚本更新地址 https://gitee.com/lxk0301/jd_scripts/raw/master/jd_fruit.js
-更新时间：2021-5-18
+更新时间：2021-8-20
 活动入口：京东APP我的-更多工具-东东农场
 东东农场活动链接：https://h5.m.jd.com/babelDiy/Zeus/3KSjXqQabiTuD1cJ28QskrpWoBKT/index.html
 已支持IOS双京东账号,Node.js支持N个京东账号
 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
 互助码shareCode请先手动运行脚本查看打印可看到
 一天只能帮助3个人。多出的助力码无效
+
+// zero205：已添加自己账号内部互助，有剩余助力次数再帮我助力
+
 ==========================Quantumultx=========================
 [task_local]
 #jd免费水果
@@ -71,8 +74,7 @@ let shareCodes = [ // 这个列表填入你要助力的好友的shareCode
 
   //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
   'e8b98b3378d1452aacd8264db388ad39@938a2a6d2007437f92d6281321383e22@ef3fe7f2772440dcb68a8a2b10d72d3c@2d711d2009024c6db04e52f16d0c4509',
-]
-let message = '', subTitle = '', option = {}, isFruitFinished = false;
+]let message = '', subTitle = '', option = {}, isFruitFinished = false;
 const retainWater = 100;//保留水滴大于多少g,默认100g;
 let jdNotify = false;//是否关闭通知，false打开通知推送，true关闭通知推送
 let jdFruitBeanCard = false;//农场使用水滴换豆卡(如果出现限时活动时100g水换20豆,此时比浇水划算,推荐换豆),true表示换豆(不浇水),false表示不换豆(继续浇水),脚本默认是浇水
@@ -106,7 +108,15 @@ const urlSchema = `openjd://virtual?params=%7B%20%22category%22:%20%22jump%22,%2
       subTitle = '';
       option = {};
       await shareCodesFormat();
+      $.retry = 0;
       await jdFruit();
+    }
+  }
+  for (let j = 0; j < cookiesArr.length; j++) {
+    if (cookiesArr[j]) {
+      cookie = cookiesArr[j];
+      $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
+      await masterHelpShare();//助力好友
     }
   }
   if ($.isNode() && allMessage && $.ctrTemp) {
@@ -127,9 +137,9 @@ async function jdFruit() {
       // option['media-url'] = $.farmInfo.farmUserPro.goodsImage;
       message = `【水果名称】${$.farmInfo.farmUserPro.name}\n`;
       console.log(`\n【京东账号${$.index}（${$.UserName}）的${$.name}好友互助码】${$.farmInfo.farmUserPro.shareCode}\n`);
+      jdFruitShareArr.push($.farmInfo.farmUserPro.shareCode)
       console.log(`\n【已成功兑换水果】${$.farmInfo.farmUserPro.winTimes}次\n`);
       message += `【已兑换水果】${$.farmInfo.farmUserPro.winTimes}次\n`;
-      await masterHelpShare();//助力好友
       if ($.farmInfo.treeState === 2 || $.farmInfo.treeState === 3) {
         option['open-url'] = urlSchema;
         $.msg($.name, ``, `【京东账号${$.index}】${$.nickName || $.UserName}\n【提醒⏰】${$.farmInfo.farmUserPro.name}已可领取\n请去京东APP或微信小程序查看\n点击弹窗即达`, option);
@@ -158,9 +168,12 @@ async function jdFruit() {
       await predictionFruit();//预测水果成熟时间
     } else {
       console.log(`初始化农场数据异常, 请登录京东 app查看农场0元水果功能是否正常,农场初始化数据: ${JSON.stringify($.farmInfo)}`);
-      console.log(`等待10秒后重试`);
-      await $.wait(10000);
-      await jdFruit();
+      if ($.retry < 3) {
+        $.retry++
+        console.log(`等待10秒后重试,第:${$.retry}次`);
+        await $.wait(10000);
+        await jdFruit();
+      }
     }
   } catch (e) {
     console.log(`任务执行异常，请检查执行日志 ‼️‼️`);
@@ -659,13 +672,19 @@ async function getExtraAward() {
 //助力好友
 async function masterHelpShare() {
   console.log('开始助力好友')
+  await initForFarm();
   let salveHelpAddWater = 0;
   let remainTimes = 3;//今日剩余助力次数,默认3次（京东农场每人每天3次助力机会）。
   let helpSuccessPeoples = '';//成功助力好友
-  console.log(`格式化后的助力码::${JSON.stringify(newShareCodes)}\n`);
-
-  for (let code of newShareCodes) {
-    console.log(`开始助力京东账号${$.index} - ${$.nickName}的好友: ${code}`);
+  // console.log(`格式化后的助力码::${JSON.stringify(newShareCodes)}\n`);
+  if ($.isNode() && !process.env.FRUITSHARECODES) {
+    console.log(`未填写助力码变量，开始账号内互助，再帮【zero205】助力`);
+    newShareCode = [...(jdFruitShareArr || []), ...(newShareCodes || [])]
+  } else {
+    newShareCode = newShareCodes
+  }
+  for (let code of newShareCode) {
+    console.log(`${$.UserName}开始助力: ${code}`);
     if (!code) continue;
     if (code === $.farmInfo.farmUserPro.shareCode) {
       console.log('不能为自己助力哦，跳过自己的shareCode\n')
@@ -1245,7 +1264,7 @@ async function initForFarm() {
 async function taskInitForFarm() {
   console.log('\n初始化任务列表')
   const functionId = arguments.callee.name.toString();
-  $.farmTask = await request(functionId, {"version": 14, "channel": 1, "babelChannel":"45"});
+  $.farmTask = await request(functionId, { "version": 14, "channel": 1, "babelChannel": "45" });
 }
 //获取好友列表API
 async function friendListInitForFarm() {
@@ -1343,7 +1362,7 @@ function shareCodesFormat() {
     if ($.shareCodesArr[$.index - 1]) {
       newShareCodes = $.shareCodesArr[$.index - 1].split('@');
     } else {
-      console.log(`由于您第${$.index}个京东账号未提供shareCode,将采纳本脚本自带的助力码\n`)
+      // console.log(`由于您第${$.index}个京东账号未提供shareCode,将采纳本脚本自带的助力码\n`)
       const tempIndex = $.index > shareCodes.length ? (shareCodes.length - 1) : ($.index - 1);
       newShareCodes = shareCodes[tempIndex].split('@');
     }
@@ -1352,7 +1371,7 @@ function shareCodesFormat() {
     //   // newShareCodes = newShareCodes.concat(readShareCodeRes.data || []);
     //   newShareCodes = [...new Set([...newShareCodes, ...(readShareCodeRes.data || [])])];
     // }
-    console.log(`第${$.index}个京东账号将要助力的好友${JSON.stringify(newShareCodes)}`)
+    // console.log(`第${$.index}个京东账号将要助力的好友${JSON.stringify(newShareCodes)}`)
     resolve();
   })
 }
