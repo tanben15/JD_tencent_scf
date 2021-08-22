@@ -8,17 +8,17 @@
 ============Quantumultx===============
 [task_local]
 #女装盲盒
-35 1,23 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_nzmh.js, tag=女装盲盒, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
+35 8,12 * * * https://gitee.com/lxk0301/jd_scripts/raw/master/jd_nzmh.js, tag=女装盲盒, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
 
 ================Loon==============
 [Script]
-cron "35 1,23 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_nzmh.js,tag=女装盲盒
+cron "35 8,12 * * *" script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_nzmh.js,tag=女装盲盒
 
 ===============Surge=================
-女装盲盒 = type=cron,cronexp="35 1,23 * * *",wake-system=1,timeout=3600,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_nzmh.js
+女装盲盒 = type=cron,cronexp="35 8,12 * * *",wake-system=1,timeout=3600,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_nzmh.js
 
 ============小火箭=========
-女装盲盒 = type=cron,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_nzmh.js, cronexpr="35 1,23 * * *", timeout=3600, enable=true
+女装盲盒 = type=cron,script-path=https://gitee.com/lxk0301/jd_scripts/raw/master/jd_nzmh.js, cronexpr="35 8,12 * * *", timeout=3600, enable=true
  */
 
 const $ = new Env('女装盲盒抽京豆');
@@ -64,7 +64,8 @@ if ($.isNode()) {
         continue
       }
       try {
-        await jdMh('https://anmp.jd.com/babelDiy/Zeus/3bMo2AgbRYYfZt83qHLZ3ruVtrtG/index.html')
+        await jdMh('https://anmp.jd.com/babelDiy/Zeus/3bMo2AgbRYYfZt83qHLZ3ruVtrtG/index.html') // 8.1-8.31
+        await jdMh('https://anmp.jd.com/babelDiy/Zeus/3c3Bt7WEWr28mWZKXbTR7f881WHM/index.html') // 8.18-8.31
       } catch (e) {
         $.logErr(e)
       }
