@@ -71,6 +71,7 @@ const inviteCodes = [
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 $.tuanIds = [];
 $.appId = 10001;
+$.newShareCode = [];
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
@@ -120,6 +121,7 @@ if ($.isNode()) {
     if (cookiesArr[j]) {
       cookie = cookiesArr[j];
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
+      $.index = j + 1;
       await helpFriends();
     }
   }
@@ -477,12 +479,12 @@ async function helpFriends() {
   if ($.canHelpFlag) {
     await shareCodesFormat();
     if ($.isNode() && !process.env.DREAM_FACTORY_SHARE_CODES) {
-      console.log(`未填写助力码变量，开始账号内互助，再帮【zero205】助力`);
-      newShareCode = [...(jdDreamFactoryShareArr || []), ...(newShareCodes || [])]
+      console.log(`您未填写助力码变量，开始账号内互助，再帮【zero205】助力`);
+      $.newShareCode = [...(jdDreamFactoryShareArr || []), ...(newShareCodes || [])]
     } else {
-      newShareCode = newShareCodes
+      $.newShareCode = newShareCodes
     }
-    for (let code of newShareCode) {
+    for (let code of $.newShareCode) {
       if (code) {
         if ($.encryptPin === code) {
           console.log(`不能为自己助力,跳过`);
@@ -1412,7 +1414,7 @@ async function showMsg() {
 //格式化助力码
 function shareCodesFormat() {
   return new Promise(async resolve => {
-    // console.log(`第${$.index}个京东账号的助力码:::${$.shareCodesArr[$.index - 1]}`)
+    console.log(`第${$.index}个京东账号的助力码:::${$.shareCodesArr[$.index - 1]}`)
     newShareCodes = [];
     if ($.shareCodesArr[$.index - 1]) {
       newShareCodes = $.shareCodesArr[$.index - 1].split('@');
@@ -1425,7 +1427,7 @@ function shareCodesFormat() {
     // if (readShareCodeRes && readShareCodeRes.code === 200) {
     //   newShareCodes = [...new Set([...newShareCodes, ...(readShareCodeRes.data || [])])];
     // }
-    // console.log(`第${$.index}个京东账号将要助力的好友${JSON.stringify(newShareCodes)}`)
+    console.log(`第${$.index}个京东账号将要助力的好友${JSON.stringify(newShareCodes)}`)
     resolve();
   })
 }

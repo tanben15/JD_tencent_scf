@@ -39,9 +39,9 @@ http-request ^https:\/\/draw\.jdfcloud\.com(\/mirror)?\/\/api\/user\/user\/detai
 */
 // @grant    require
 const $ = new Env('宠汪汪赛跑');
-const zooFaker = require('./JDJRValidator_Pure');
-$.get = zooFaker.injectToRequest2($.get.bind($));
-$.post = zooFaker.injectToRequest2($.post.bind($));
+const injectToRequest2 = require('./JDJRValidator_Pure').injectToRequest2;
+$.get = injectToRequest2($.get.bind($));
+$.post = injectToRequest2($.post.bind($));
 //宠汪汪赛跑所需token，默认读取作者服务器的
 //需自行抓包，宠汪汪小程序获取token，点击`发现`或`我的`，寻找`^https:\/\/draw\.jdfcloud\.com(\/mirror)?\/\/api\/user\/user\/detail\?openId=`获取token
 let jdJoyRunToken = '';
@@ -116,6 +116,7 @@ async function main() {
   }
   const readTokenRes = ''
   // const readTokenRes = await readToken();
+  $.http.get({url: 'https://purge.jsdelivr.net/gh/zero205/updateTeam@main/shareCodes/lkyl.json'}).then((resp) => {}).catch((e) => console.log('刷新CDN异常', e));
   await updateToken()
   if (readTokenRes && readTokenRes.code === 200) {
     $.LKYLToken = readTokenRes.data[0] || ($.isNode() ? (process.env.JOY_RUN_TOKEN ? process.env.JOY_RUN_TOKEN : jdJoyRunToken) : ($.getdata('jdJoyRunToken') || jdJoyRunToken));
@@ -616,7 +617,7 @@ isRequest ? getToken() : main();
 
 
 function taroRequest(e) {
-  const a = $.isNode() ? require('crypto-js') : CryptoJS;
+  const a = require('crypto-js');
   const i = "98c14c997fde50cc18bdefecfd48ceb7"
   const o = a.enc.Utf8.parse(i)
   const r = a.enc.Utf8.parse("ea653f4f3c5eda12");
