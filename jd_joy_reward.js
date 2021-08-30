@@ -114,7 +114,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
 
 async function joyReward() {
   try {
-    let starttime = process.env.JOY_STARTTIME ? process.env.JOY_STARTTIME : 59.8;
+    let starttime = process.env.JOY_STARTTIME ? process.env.JOY_STARTTIME : 60;
     let nowtime = new Date().Format("s.S")
     if ($.index == 1 && nowtime < starttime) {
       let sleeptime = (starttime - nowtime) * 1000;
@@ -145,18 +145,18 @@ async function joyReward() {
         //   rewardNum = joyRewardName;
         // }
         let giftSaleInfos = 'beanConfigs0';
-        let time = new Date($.getExchangeRewardsRes['currentTime']).getHours();
-        if (time >= 0 && time < 8) {
+        const time = (new Date().getUTCHours() + 8) % 24;
+        if (time >= 23 && time < 7) {
           giftSaleInfos = 'beanConfigs0';
           $.Num = 0
           rewardNum = 500
         }
-        if (time >= 8 && time < 16) {
+        if (time >= 7 && time < 15) {
           giftSaleInfos = 'beanConfigs8';
           $.Num = 8
           rewardNum = 500
         }
-        if (time >= 16 && time < 24) {
+        if (time >= 15 && time < 23) {
           giftSaleInfos = 'beanConfigs16';
           $.Num = 16
           rewardNum = 20
@@ -245,7 +245,7 @@ async function joyReward() {
 }
 function getExchangeRewards() {
   let opt = {
-    url: "//jdjoy.jd.com/common/gift/getBeanConfigs?reqSource=h5&invokeKey=ztmFUCxcPMNyUq0P",
+    url: "//jdjoy.jd.com/common/gift/getBeanConfigs?reqSource=h5&invokeKey=RtKLB8euDo7KwsO0",
     method: "GET",
     data: {},
     credentials: "include",
@@ -253,7 +253,7 @@ function getExchangeRewards() {
   }
   return new Promise((resolve) => {
     let lkt = new Date().getTime()
-    let lks = $.md5('' + 'ztmFUCxcPMNyUq0P' + lkt).toString()
+    let lks = $.md5('' + 'RtKLB8euDo7KwsO0' + lkt).toString()
     const option = {
       url: "https:" + taroRequest(opt)['url'] + $.validate[$.index-1],
       headers: {
@@ -293,13 +293,13 @@ function getExchangeRewards() {
 function exchange(saleInfoId, orderSource) {
   let body = { "buyParam": { "orderSource": orderSource, "saleInfoId": saleInfoId }, "deviceInfo": {} }
   let opt = {
-    "url": "//jdjoy.jd.com/common/gift/new/exchange?reqSource=h5&invokeKey=ztmFUCxcPMNyUq0P",
+    "url": "//jdjoy.jd.com/common/gift/new/exchange?reqSource=h5&invokeKey=RtKLB8euDo7KwsO0",
     "data": body,
     "credentials": "include", "method": "POST", "header": { "content-type": "application/json" }
   }
   return new Promise((resolve) => {
     let lkt = new Date().getTime()
-    let lks = $.md5('' + 'ztmFUCxcPMNyUq0P' + lkt).toString()
+    let lks = $.md5('' + 'RtKLB8euDo7KwsO0' + lkt).toString()
     const option = {
       url: "https:" + taroRequest(opt)['url'] + $.validate[$.index-1],
       body: `${JSON.stringify(body)}`,
@@ -438,7 +438,7 @@ function safeGet(data) {
   }
 }
 function taroRequest(e) {
-  const a = $.isNode() ? require('crypto-js') : CryptoJS;
+  const a = require('crypto-js');
   const i = "98c14c997fde50cc18bdefecfd48ceb7"
   const o = a.enc.Utf8.parse(i)
   const r = a.enc.Utf8.parse("ea653f4f3c5eda12");
