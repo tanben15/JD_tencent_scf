@@ -69,6 +69,7 @@ let shareCodes = [ // IOS本地脚本用户这个列表填入你要助力的好�
   //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
   'MTAxODc2NTEzMzAwMDAwMDAwMzQzMjU4NQ==@MTAxODc2NTEzMjAwMDAwMDAwMzYyOTYwOQ==@MTAxODcxOTI2NTAwMDAwMDAwMzQzODk4NQ==',
 ]
+
 let message = '', subTitle = '', option = {};
 let jdNotify = false;//是否关闭通知，false打开通知推送，true关闭通知推送
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
@@ -76,8 +77,9 @@ let goodsUrl = '', taskInfoKey = [];
 let randomCount = $.isNode() ? 20 : 5;
 $.newShareCode = [];
 !(async () => {
-  if (!process.env.JD_JOIN_ZLC || process.env.JD_JOIN_ZLC !== 'false')
-  console.log(`【注意】本脚本默认加入助力池互助！\n如需退出助力池，请添加变量名称：JD_JOIN_ZLC，变量值填false\n`)
+  if (!process.env.JD_JOIN_ZLC || process.env.JD_JOIN_ZLC !== 'false') {
+    console.log(`【注意】本脚本默认会给助力池进行助力！\n如需加入助力池请添加TG群：https://t.me/jd_zero_205\n如不加入助力池互助，可添加变量名称：JD_JOIN_ZLC，变量值：false\n`)
+  }
   await requireConfig();
   if (!cookiesArr[0]) {
     $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', {"open-url": "https://bean.m.jd.com/bean/signIndex.action"});
@@ -171,7 +173,7 @@ async function jdPet() {
       // ***************************
       // 报告运行次数
       $.get({
-        url: `https://api.sharecode.ga/api/runTimes?activityId=pet&sharecode=${$.petInfo.shareCode}`
+        url: `https://api.jdsharecode.xyz/api/runTimes?activityId=pet&sharecode=${$.petInfo.shareCode}`
       }, (err, resp, data) => {
         if (err) {
           console.log('上报失败', err)
@@ -525,7 +527,7 @@ async function showMsg() {
 }
 function readShareCode() {
   return new Promise(async resolve => {
-    $.get({url: `https://api.sharecode.ga/api/pet/${randomCount}`, 'timeout': 10000}, (err, resp, data) => {
+    $.get({url: `https://api.jdsharecode.xyz/api/pet/${randomCount}`, 'timeout': 10000}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)

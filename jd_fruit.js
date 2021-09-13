@@ -78,16 +78,15 @@ let shareCodes = [ // 这个列表填入你要助力的好友的shareCode
 let message = '', subTitle = '', option = {}, isFruitFinished = false;
 const retainWater = 100;//保留水滴大于多少g,默认100g;
 let jdNotify = false;//是否关闭通知，false打开通知推送，true关闭通知推送
-
-let jdFruitBeanCard = true;//农场使用水滴换豆卡(如果出现限时活动时100g水换20豆,此时比浇水划算,推荐换豆),true表示换豆(不浇水),false表示不换豆(继续浇水),脚本默认是浇水
-let randomCount = $.isNode() ? 0 : 0;
-
+let jdFruitBeanCard = false;//农场使用水滴换豆卡(如果出现限时活动时100g水换20豆,此时比浇水划算,推荐换豆),true表示换豆(不浇水),false表示不换豆(继续浇水),脚本默认是浇水
+let randomCount = $.isNode() ? 20 : 5;
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
 const urlSchema = `openjd://virtual?params=%7B%20%22category%22:%20%22jump%22,%20%22des%22:%20%22m%22,%20%22url%22:%20%22https://h5.m.jd.com/babelDiy/Zeus/3KSjXqQabiTuD1cJ28QskrpWoBKT/index.html%22%20%7D`;
 $.newShareCode = [];
 !(async () => {
-  if (!process.env.JD_JOIN_ZLC || process.env.JD_JOIN_ZLC !== 'false')
-  console.log(`【注意】本脚本默认加入助力池互助！\n如需退出助力池，请添加变量名称：JD_JOIN_ZLC，变量值填false\n`)
+  if (!process.env.JD_JOIN_ZLC || process.env.JD_JOIN_ZLC !== 'false') {
+    console.log(`【注意】本脚本默认会给助力池进行助力！\n如需加入助力池请添加TG群：https://t.me/jd_zero_205\n如不加入助力池互助，可添加变量名称：JD_JOIN_ZLC，变量值：false\n`)
+  }
   await requireConfig();
   if (!cookiesArr[0]) {
     $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
@@ -161,7 +160,7 @@ async function jdFruit() {
       // ***************************
       // 报告运行次数
       $.get({
-        url: `https://api.sharecode.ga/api/runTimes?activityId=farm&sharecode=${$.farmInfo.farmUserPro.shareCode}`
+        url: `https://api.jdsharecode.xyz/api/runTimes?activityId=farm&sharecode=${$.farmInfo.farmUserPro.shareCode}`
       }, (err, resp, data) => {
         if (err) {
           console.log('上报失败', err)
@@ -1366,7 +1365,7 @@ function timeFormat(time) {
 }
 function readShareCode() {
   return new Promise(async resolve => {
-    $.get({url: `https://api.sharecode.ga/api/farm/${randomCount}`, timeout: 10000,}, (err, resp, data) => {
+    $.get({url: `https://api.jdsharecode.xyz/api/farm/${randomCount}`, timeout: 10000,}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
