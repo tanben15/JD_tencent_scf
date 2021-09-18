@@ -171,8 +171,8 @@ async function jdDreamFactory() {
     await taskList();
     await investElectric();
     await QueryHireReward();//收取招工电力
-    await PickUp();//收取自家的地下零件
-    await stealFriend();
+//     await PickUp();//收取自家的地下零件
+//     await stealFriend();
     if (tuanActiveId) {
       await tuanActivity();
       await QueryAllTuan();
@@ -1569,7 +1569,8 @@ function taskurl(functionId, body = '', stk) {
       'Accept-Language': 'zh-cn',
       'Referer': 'https://wqsd.jd.com/pingou/dream_factory/index.html',
       'Accept-Encoding': 'gzip, deflate, br',
-    }
+    },
+    timeout: 10000
   }
 }
 function newtasksysUrl(functionId, taskId, stk) {
