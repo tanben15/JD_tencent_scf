@@ -1,4 +1,4 @@
-﻿/*
+/*
 签到领现金，每日2毛～5毛
 可互助，助力码每日不变，只变日期
 活动入口：京东APP搜索领现金进入
@@ -27,29 +27,12 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭通知推送
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message;
-
-let helpAuthor = false;
+let helpAuthor = true;
 const randomCount = $.isNode() ? 5 : 5;
 let cash_exchange = false;//是否消耗2元红包兑换200京豆，默认否
 const inviteCodes = [
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`,
-  `Z0ppPrnsZ_0h@eU9Yab2wM6kv82rVnntF1A@eU9Yau62Y_Ui9jjcyScThw@Ih4wb-20e_Ql8G3cynUa`
+  `eU9Yau3kZ_4g-DiByHEQ0A@ZnQya-i1Y_UmpGzUnnEX@fkFwauq3ZA@f0JyJuW7bvQ@IhM0bu-0b_kv8W6E@eU9YKpnxOLhYtQSygTJQ@-oaWtXEHOrT_bNMMVso@eU9YG7XaD4lXsR2krgpG@KxMzZOW7YvQ@eU9Ya7jnZP5w822BmntC0g@eU9YPa34F5lnpBWRjyp3@eU9YarnmYfRwpTzUziAV1Q`,
+  `eU9Yau3kZ_4g-DiByHEQ0A@ZnQya-i1Y_UmpGzUnnEX@fkFwauq3ZA@f0JyJuW7bvQ@IhM0bu-0b_kv8W6E@eU9YKpnxOLhYtQSygTJQ@-oaWtXEHOrT_bNMMVso@eU9YG7XaD4lXsR2krgpG@KxMzZOW7YvQ@eU9Ya7jnZP5w822BmntC0g@eU9YPa34F5lnpBWRjyp3@eU9YarnmYfRwpTzUziAV1Q`,
 ]
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
@@ -67,11 +50,11 @@ let allMessage = '';
     return;
   }
   await requireConfig()
-  $.authorCode = await getAuthorShareCode('')
+  $.authorCode = await getAuthorShareCode('https://raw.githubusercontent.com/Aaron-lv/updateTeam/master/shareCodes/jd_updateCash.json')
   if (!$.authorCode) {
-    $.http.get({url: ''}).then((resp) => {}).catch((e) => $.log('刷新CDN异常', e));
+    $.http.get({url: 'https://purge.jsdelivr.net/gh/Aaron-lv/updateTeam@master/shareCodes/jd_updateCash.json'}).then((resp) => {}).catch((e) => $.log('刷新CDN异常', e));
     await $.wait(1000)
-    $.authorCode = await getAuthorShareCode('') || []
+    $.authorCode = await getAuthorShareCode('https://cdn.jsdelivr.net/gh/Aaron-lv/updateTeam@master/shareCodes/jd_updateCash.json') || []
   }
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
@@ -466,12 +449,13 @@ function getSign(functionid, body, uuid) {
     let HostArr = ['jdsign.cf', 'signer.nz.lu']
     let Host = HostArr[Math.floor((Math.random() * HostArr.length))]
     let options = {
-      url: `https://cdn.xia.me/ddo`,
+      url: `https://cdn.nz.lu/ddo`,
       body: JSON.stringify(data),
       headers: {
         Host,
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
-      }
+      },
+      timeout: 30 * 1000
     }
     $.post(options, (err, resp, data) => {
       try {
